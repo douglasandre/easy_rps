@@ -14,6 +14,7 @@
 ActiveRecord::Schema.define(version: 20160802173415) do
 
   create_table "businesses", force: :cascade do |t|
+    t.string "municipal_inscription"
     t.string "name"
   end
 

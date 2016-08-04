@@ -1,14 +1,14 @@
 require 'spec_helper'
 
-describe 'EasyRps::Issuer' do
+describe EasyRps::Modules::Issuer do
 
-  REQUIRED_METHODS = [:lala]
+  REQUIRED_ATTRIBUTES = [:municipal_inscription]
   let(:issuer)  { Business.create! }
-  let(:taker)   { create_user }
 
-  REQUIRED_METHODS.each do |method|
-    it "requires the method #{method} from the issuer" do
-      expect(issuer.send(method)).to raise_error(EasyRps::RequiredMethod)
+  REQUIRED_ATTRIBUTES.each do |attribute|
+    it "requires the attribute #{attribute} from the issuer" do
+      expt_message = "You need to implement the #{attribute} method on your class, or configure an alias to use EasyRps"
+      expect(issuer.send(attribute)).to raise_error(expt_message)
     end
   end
 

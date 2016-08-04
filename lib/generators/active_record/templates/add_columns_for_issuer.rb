@@ -1,0 +1,1 @@
+add_column table_name, :municipal_inscription, :string
