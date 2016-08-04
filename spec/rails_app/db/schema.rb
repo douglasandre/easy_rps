@@ -16,14 +16,25 @@ ActiveRecord::Schema.define(version: 20160802173415) do
   create_table "businesses", force: :cascade do |t|
     t.string "municipal_inscription"
     t.string "name"
+    t.string "city"
+    t.string "state"
   end
 
-  create_table "products", force: :cascade do |t|
+  create_table "sales", force: :cascade do |t|
+    t.integer  "service_id"
+    t.decimal  "amount",     precision: 8, scale: 2
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "services", force: :cascade do |t|
     t.string "name"
+    t.string "service_code"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
+    t.string "cpf"
   end
 
 end

@@ -4,7 +4,13 @@ module EasyRps
       module SaoPaulo
         class Printer
 
-          attr_reader :issuer, :taker, :rps_itens
+          attr_reader :header, :itens, :footer, :issuer, :taker, :rps_itens
+
+          def initialize(issuer, taker, rps_itens)
+            @issuer     = issuer
+            @taker      = taker
+            @rps_itens  = rps_itens
+          end
 
           def print(rps)
             

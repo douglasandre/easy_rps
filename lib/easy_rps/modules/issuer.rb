@@ -14,7 +14,7 @@ module EasyRps
       # Your class need to respond to these calls, 
       # using an attribute or method
       def self.required_responses
-        [:municipal_inscription]
+        [:municipal_inscription, :city, :state]
       end
 
     end

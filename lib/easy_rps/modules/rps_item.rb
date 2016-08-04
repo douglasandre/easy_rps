@@ -21,8 +21,8 @@ module EasyRps
       # Your class need to respond to these calls, 
       # using an attribute or method
       def self.required_responses
-        [:emitted_on, :rps_status, :amount, :tax_amount, 
-         :service_code, :aliquot, :iss, :description]
+        [:emitted_on, :rps_status, :amount, :tax_amount,
+         :service_code, :aliquot, :iss, :rps_description]
       end
     end
   end

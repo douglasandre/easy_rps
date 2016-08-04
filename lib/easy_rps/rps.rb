@@ -9,8 +9,16 @@ module EasyRps
       @rps_itens  = rps_itens
     end
     
-    def print(state, city)
-      "#{state}::#{city}::Printer.print".constantize.send(self)
+    def start_date
+      @rps_itens.sort_by{|a| a.emitted_on}.first.emitted_on
+    end
+
+    def end_date
+      @rps_itens.sort_by{|a| a.emitted_on}.last.emitted_on
+    end
+
+    def print
+      "#{@issuer.state}::#{@issuer.city}::Printer.print".constantize.send(self)
     end
   end
 end
