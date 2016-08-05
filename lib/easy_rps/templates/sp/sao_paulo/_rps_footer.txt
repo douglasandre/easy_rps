@@ -1,1 +1,1 @@
-{REGISTER_TYPE}{TOTAL_ITENS}{TOTAL_AMOUNT}{TOTAL_TAX_AMOUNT}
+{register_type}{total_itens}{total_amount}{total_tax_amount}

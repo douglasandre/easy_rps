@@ -106,4 +106,28 @@ printers:
           size: 88
           type: 'text'
 
+      footer:
+        register_type:
+          value: '9'
+          size: 1
+          type: 'num'
+        total_itens:
+          value: 'total_itens'
+          dynamic: true
+          fill: true
+          size: 7
+          type: 'num'
+        total_amount:
+          value: '3'
+          dynamic: true
+          fill: true
+          size: 15
+          type: 'num'
+        total_tax_amount:
+          value: 'total_tax_amount'
+          dynamic: true
+          fill": true
+          size: 15
+          type: 'num'
+
 

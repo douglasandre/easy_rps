@@ -1,16 +1,10 @@
 module EasyRps
   module Printers
-    class Footer
-      TEMPLATE = 'templates/STATE/CITY/_rps_footer.txt'
-
-      attr_reader :rps
+    class Footer < Register
 
       def initialize(rps)
-        @rps  = rps
-      end
-
-      def print(rps)
-        
+        super(rps)
+        @template = File.read("#{template_base_path}/_rps_footer.txt")
       end
 
     end
