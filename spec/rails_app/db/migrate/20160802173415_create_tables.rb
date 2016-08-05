@@ -14,6 +14,7 @@ class CreateTables < ActiveRecord::Migration
 
     create_table :sales do |t|
       t.references  :service
+      t.references  :user
       t.decimal     :amount, precision: 8, scale: 2
       t.timestamps
     end

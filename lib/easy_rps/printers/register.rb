@@ -4,7 +4,7 @@ module EasyRps
   module Printers
     class Register
       attr_reader :rps, :template_base_path, :complete_config, :config, 
-                  :template, :printed
+                  :template
 
       def initialize(rps)
         @rps                = rps

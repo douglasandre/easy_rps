@@ -1,12 +1,12 @@
 module EasyRps
   class Rps
 
-    attr_reader :issuer, :taker, :rps_itens
+    attr_reader :issuer, :taker, :rps_itens, :printer
 
-    def initialize(issuer, taker, rps_itens)
+    def initialize(issuer, rps_itens)
       @issuer     = issuer
-      @taker      = taker
       @rps_itens  = rps_itens
+      @printer    = Printers::BasePrinter.new(self)
     end
     
     def start_date
@@ -18,7 +18,7 @@ module EasyRps
     end
 
     def print
-      "#{@issuer.state}::#{@issuer.city}::Printer.print".constantize.send(self)
+      @printer.print
     end
   end
 end

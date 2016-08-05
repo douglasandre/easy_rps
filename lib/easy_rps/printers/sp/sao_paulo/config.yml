@@ -89,11 +89,13 @@ printers:
           size: 1
           type: 'num'
         taker_doc_type:
-          value: '3'
+          value: '@rps_item.taker.taker_doc_type'
+          dynamic: true
           size: 1
           type: 'num'
         taker_doc_value:
-          value: ''
+          value: '@rps_item.taker.taker_doc_value'
+          dynamic: true
           size: 14
           type: 'num'
           dynamic: true

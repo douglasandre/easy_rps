@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20160802173415) do
 
   create_table "sales", force: :cascade do |t|
     t.integer  "service_id"
+    t.integer  "user_id"
     t.decimal  "amount",     precision: 8, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"

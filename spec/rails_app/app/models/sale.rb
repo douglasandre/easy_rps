@@ -1,9 +1,12 @@
 class Sale < ActiveRecord::Base
 
   belongs_to :service
+  belongs_to :user
   easy_rps :rps_item
 
   alias_attribute :emitted_on,   :created_at 
+  alias  :taker :user
+
 
   def amount_in_cents
     (amount.to_d * 100).to_i
