@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe EasyRps::Printers::Header do
 
-  let(:issuer)  { Business.create!(municipal_inscription: '123456789', state: 'SP', city: 'São Paulo') }
+  let(:issuer)  { Business.create!(municipal_inscription: '12345', state: 'SP', city: 'São Paulo') }
   let(:taker)   { User.create! }
   let(:items)   { [Sale.create!(service: Service.create!),
                    Sale.create!(service: Service.create!)] }
@@ -10,8 +10,17 @@ describe EasyRps::Printers::Header do
 
   describe '#print' do
     it 'prints the rps header correctly' do
-      header = EasyRps::Printers::Header.new(rps)
-      expect(header.print).to eq('1002513391612016071320160713')
+      header    = EasyRps::Printers::Header.new(rps)
+      expected  = "100200012345#{rps.start_date.strftime('%Y%m%d')}#{rps.end_date.strftime('%Y%m%d')}"
+      expect(header.print).to eq(expected)
+    end
+
+    it 'raises and error when any data are invalid' do
+      issuer  = Business.create!(municipal_inscription: '1234567890', state: 'SP', city: 'São Paulo')
+      rps     = EasyRps::Rps.new(issuer, taker, items)
+      header  = EasyRps::Printers::Header.new(rps)
+      expected_message = 'Invalid length for {MUNICIPAL_INSCRIPTION}. Expected: 8. Received: 10. 1234567890'
+      expect { header.print }.to raise_error(expected_message)
     end
   end
 end
