@@ -22,7 +22,7 @@ module EasyRps
       # using an attribute or method
       def self.required_responses
         [:emitted_on, :rps_status, :amount, :tax_amount,
-         :service_code, :aliquot, :iss, :rps_description]
+         :service_code, :aliquot, :iss_withheld, :rps_description]
       end
     end
   end

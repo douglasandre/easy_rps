@@ -3,7 +3,7 @@ require 'easy_rps/rps'
 require 'easy_rps/errors'
 require 'easy_rps/models'
 require 'easy_rps/orm/active_record'
-%w(base_printer register header item footer rps_field).each do |printer_file|
+%w(base_printer register header detail footer rps_field).each do |printer_file|
   require "easy_rps/printers/#{printer_file}"
 end
 

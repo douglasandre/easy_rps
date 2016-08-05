@@ -1,0 +1,1 @@
+{register_type}{rps_type}{rps_serie}{rps_number}{emitted_on}{rps_status}{amount}{tax_amount}{service_code}{aliquot}{iss_withheld}{taker_doc_type}{taker_doc_value}{rps_description}

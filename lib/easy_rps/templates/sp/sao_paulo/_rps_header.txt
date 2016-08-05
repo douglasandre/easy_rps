@@ -1,1 +1,1 @@
-{REGISTER_TYPE}{FILE_VERSION}{MUNICIPAL_INSCRIPTION}{START_DATE}{END_DATE}
+{register_type}{file_version}{municipal_inscription}{start_date}{end_date}

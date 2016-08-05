@@ -2,15 +2,25 @@ module EasyRps
   module Printers
     class RpsField
 
-      attr_reader :key, :value, :size, :type
+      attr_reader :options, :key, :value, :size, :type, :rps
 
-      def initialize(options = {})
-        @key        = options[:key]
-        @value      = options[:value]
-        @size       = options[:size]
-        @type       = options[:type]
-        @fill       = options[:fill] || false
-        @fill_char  = options[:fill_char] || "0"
+      def initialize(rps, key, options = {})
+        @rps        = rps
+        @key        = key
+        @options    = options
+        @value      = load_value
+        @size       = options['size']
+        @type       = options['type']
+        @fill       = options['fill'] || false
+        @fill_char  = options['fill_char'] || "0"
+      end
+
+      def load_value
+        if @options['dynamic']
+          eval('rps.' + @options['value'])
+        else
+          @options['value']
+        end
       end
 
       def formatted_value
@@ -20,7 +30,11 @@ module EasyRps
 
       def fill_field
         while @value.length < @size do
-          @value = @fill_char + @value
+          if @type == 'num'
+            @value = @fill_char + @value
+          else
+            @value << @fill_char
+          end
         end
         @value
       end

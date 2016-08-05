@@ -1,0 +1,94 @@
+printers:
+  sp:
+    sao_paulo:
+      file_format: 'txt'
+
+      header:
+        register_type:
+          value: '1'
+          size: 1
+          type: 'num'
+        file_version:
+          value: '002'
+          size: 3
+          type: 'num'
+        municipal_inscription:
+          value: 'issuer.municipal_inscription'
+          dynamic: true
+          size: 8
+          type: 'num'
+          fill: true
+        start_date:
+          value: "start_date.strftime('%Y%m%d')"
+          dynamic: true
+          size: 8
+          type: 'num'
+        end_date:
+          value: "end_date.strftime('%Y%m%d')"
+          dynamic: true
+          size: 8
+          type: 'num'
+
+      detail:
+        register_type:
+          value: '3'
+          size: 1
+          type: 'num'
+        rps_type:
+          value: 'RPS-C'
+          size: 5
+          type: 'text'
+        rps_serie:
+          value: 'PB01'
+          size: 5
+          type: 'text'
+          fill: true
+          fill_char: ' '
+        rps_number:
+          value: ''
+          size: 12
+          type: 'text'
+          fill: true
+        emitted_on:
+          value: ''
+          size: 8
+          type: 'date'
+        rps_status:
+          value: 'T'
+          size: 1
+          type: 'text'
+        amount:
+          value: ''
+          size: 15
+          type: 'num'
+          fill: true
+        tax_amount:
+          value: 'RPS-C'
+          size: 15
+          type: 'text'
+        service_code:
+          value: 'RPS-C'
+          size: 5
+          type: 'text'
+        aliquot:
+          value: ''
+          size: 4
+          type: 'text'
+        iss_withheld:
+          value: '1'
+          size: 1
+          type: 'text'
+        taker_doc_type:
+          value: '3'
+          size: 1
+          type: 'text'
+        taker_doc_value:
+          value: 'RPS-C'
+          size: 14
+          type: 'text'
+        rps_description: 
+          value: 'RPS-C'
+          size: 88
+          type: 'text'
+
+
