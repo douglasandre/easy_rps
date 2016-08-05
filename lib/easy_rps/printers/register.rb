@@ -16,7 +16,7 @@ module EasyRps
       def print
         printed = @template
         @config.each do |attr_conf|
-          field   = RpsField.new(@rps, attr_conf[0], attr_conf[1])
+          field   = RpsField.new(attr_conf[0], attr_conf[1].merge('rps' => rps))
           printed = printed.gsub("\{#{field.key}\}", field.formatted_value)
         end
         printed

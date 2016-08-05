@@ -5,6 +5,10 @@ class Sale < ActiveRecord::Base
 
   alias_attribute :emitted_on,   :created_at 
 
+  def amount_in_cents
+    (amount.to_d * 100).to_i
+  end
+
   def rps_status
     'T'
   end
@@ -17,7 +21,7 @@ class Sale < ActiveRecord::Base
     0
   end
 
-  def iss
+  def iss_withheld
     1
   end
 

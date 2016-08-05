@@ -13,18 +13,18 @@ printers:
           size: 3
           type: 'num'
         municipal_inscription:
-          value: 'issuer.municipal_inscription'
+          value: 'rps.issuer.municipal_inscription'
           dynamic: true
           size: 8
           type: 'num'
           fill: true
         start_date:
-          value: "start_date.strftime('%Y%m%d')"
+          value: "rps.start_date.strftime('%Y%m%d')"
           dynamic: true
           size: 8
           type: 'num'
         end_date:
-          value: "end_date.strftime('%Y%m%d')"
+          value: "rps.end_date.strftime('%Y%m%d')"
           dynamic: true
           size: 8
           type: 'num'
@@ -44,50 +44,63 @@ printers:
           type: 'text'
           fill: true
           fill_char: ' '
-        rps_number:
+        rps_number: #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
           value: ''
           size: 12
           type: 'text'
           fill: true
         emitted_on:
-          value: ''
+          value: "@rps_item.emitted_on.strftime('%Y%m%d')"
           size: 8
           type: 'date'
+          dynamic: true
         rps_status:
-          value: 'T'
+          value: '@rps_item.rps_status'
+          dynamic: true
           size: 1
           type: 'text'
         amount:
-          value: ''
+          value: "@rps_item.amount_in_cents"
+          dynamic: true
           size: 15
           type: 'num'
           fill: true
         tax_amount:
-          value: 'RPS-C'
+          value: '@rps_item.tax_amount'
+          dynamic: true
           size: 15
           type: 'text'
+          fill: true
         service_code:
-          value: 'RPS-C'
+          value: '@rps_item.service_code'
+          dynamic: true
+          fill: true
           size: 5
-          type: 'text'
+          type: 'num'
         aliquot:
-          value: ''
+          value: '@rps_item.aliquot'
+          dynamic: true
           size: 4
-          type: 'text'
+          type: 'num'
+          fill: true
         iss_withheld:
-          value: '1'
+          value: '@rps_item.iss_withheld'
+          dynamic: true
           size: 1
-          type: 'text'
+          type: 'num'
         taker_doc_type:
           value: '3'
           size: 1
-          type: 'text'
+          type: 'num'
         taker_doc_value:
-          value: 'RPS-C'
+          value: ''
           size: 14
-          type: 'text'
+          type: 'num'
+          dynamic: true
+          fill: true
         rps_description: 
-          value: 'RPS-C'
+          value: '@rps_item.rps_description.upcase'
+          dynamic: true
           size: 88
           type: 'text'
 

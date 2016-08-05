@@ -4,23 +4,18 @@ module EasyRps
 
       attr_reader :options, :key, :value, :size, :type, :rps
 
-      def initialize(rps, key, options = {})
-        @rps        = rps
+      def initialize(key, options = {})
+        options.except('fill', 'fill_char', 'value', 'dynamic').each do |option, value|
+          instance_variable_set("@#{option}", value)
+        end
         @key        = key
-        @options    = options
-        @value      = load_value
-        @size       = options['size']
-        @type       = options['type']
+        @value      = load_value_from_options(options)
         @fill       = options['fill'] || false
         @fill_char  = options['fill_char'] || "0"
       end
 
-      def load_value
-        if @options['dynamic']
-          eval('rps.' + @options['value'])
-        else
-          @options['value']
-        end
+      def load_value_from_options(options)
+        options['dynamic'] ? eval(options['value']).to_s : options['value']
       end
 
       def formatted_value
@@ -38,7 +33,6 @@ module EasyRps
         end
         @value
       end
-
     end
   end
 end
