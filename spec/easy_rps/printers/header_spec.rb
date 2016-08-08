@@ -7,7 +7,7 @@ describe EasyRps::Printers::Header do
                    Sale.create!(service: Service.create!)] }
   let(:rps)     { EasyRps::Rps.new(issuer, items) }
 
-  describe '#print' do
+  describe '#print', header: true do
     it 'prints the rps header correctly' do
       header    = EasyRps::Printers::Header.new(rps)
       expected  = "100200012345#{rps.start_date.strftime('%Y%m%d')}#{rps.end_date.strftime('%Y%m%d')}"

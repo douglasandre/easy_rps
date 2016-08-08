@@ -12,7 +12,7 @@ describe EasyRps::Printers::Detail do
   describe '#print', detail: true do
     it 'prints an rps item correctly' do
       item      = EasyRps::Printers::Detail.new(rps, items.first)
-      expected = "3RPS-C5    00000000086920160713T0000000000200000000000000000000864802002100036473148892SERVICE DESCRIPTION"
+      expected = "3RPS-CEY 1 00000000016920160713T0000000000200000000000000000000864802002100036473148892SERVICE DESCRIPTION"
       expect(item.print).to eq(expected)
     end
   end

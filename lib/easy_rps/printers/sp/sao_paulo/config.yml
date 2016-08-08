@@ -1,7 +1,8 @@
 printers:
   sp:
     sao_paulo:
-      file_format: 'txt'
+      file_format:  'txt'
+      rps_serie:    'EY 1'
 
       header:
         register_type:

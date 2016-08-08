@@ -1,5 +1,5 @@
 require 'easy_rps/version'
-require 'easy_rps/rps'
+require 'easy_rps/app/models/rps'
 require 'easy_rps/errors'
 require 'easy_rps/models'
 require 'easy_rps/orm/active_record'

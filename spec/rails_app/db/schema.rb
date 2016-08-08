@@ -20,12 +20,25 @@ ActiveRecord::Schema.define(version: 20160802173415) do
     t.string "state"
   end
 
+  create_table "rps", force: :cascade do |t|
+    t.integer  "first_item_id"
+    t.integer  "last_item_id"
+    t.string   "issuer_type"
+    t.integer  "issuer_id"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.text     "printed_text"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
   create_table "sales", force: :cascade do |t|
     t.integer  "service_id"
     t.integer  "user_id"
-    t.decimal  "amount",     precision: 8, scale: 2
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.decimal  "amount",      precision: 8, scale: 2
+    t.integer  "rps_item_id"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   create_table "services", force: :cascade do |t|

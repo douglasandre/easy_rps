@@ -14,8 +14,8 @@ module EasyRps
         rps.rps_itens.each do |item|
           @details += "#{Detail.new(rps, item).print}\n"
         end
-        # @footer = Footer.new(rps).print
-        @header + @details# + @footer
+        @footer = "#{Footer.new(rps).print}\n"
+        @header + @details + @footer
       end
     end
   end

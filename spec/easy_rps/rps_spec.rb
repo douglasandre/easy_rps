@@ -9,10 +9,15 @@ describe EasyRps::Rps do
                    Sale.create!(service: service, amount: '79,90', user: taker)] }
   let(:rps)     { EasyRps::Rps.new(issuer, items) }
 
-  describe '#print' do
-    it 'prints the rps header correctly' do
-      expect(rps.print).to eq('')
-    end    
+  describe '#print_and_save', rps: true do
+    it 'prints and saves the rps' do
+      expect(rps.print_and_save).to be_truthy
+    end
+
+    it 'sets the printed_text correctly' do
+      rps.print_and_save
+      expect(rps.printed_text).not_to be_nil
+    end
   end
 
 end

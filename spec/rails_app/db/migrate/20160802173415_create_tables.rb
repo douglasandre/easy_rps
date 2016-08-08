@@ -16,12 +16,25 @@ class CreateTables < ActiveRecord::Migration
       t.references  :service
       t.references  :user
       t.decimal     :amount, precision: 8, scale: 2
-      t.timestamps
+      t.integer     :rps_item_id
+      t.timestamps null: false
     end
 
     create_table :services do |t|
       t.string :name
       t.string :service_code
     end
+
+    create_table :rps do |t|
+      t.integer     :first_item_id
+      t.integer     :last_item_id
+      t.string      :issuer_type
+      t.integer     :issuer_id
+      t.date        :start_date
+      t.date        :end_date
+      t.text        :printed_text
+      t.timestamps null: false
+    end
+    
   end
 end
