@@ -97,7 +97,7 @@ class Sale < ActiveRecord::Base
 end
 ```
 
-### 4. Emitting RPS for a new city
+### Creating a RPS format for a new city
 You can configure a new city to emit RPS based on the following file:
 
 ```
