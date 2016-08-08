@@ -2,7 +2,6 @@ printers:
   sp:
     sao_paulo:
       file_format:  'txt'
-      rps_serie:    'EY 1'
 
       header:
         register_type:
@@ -45,10 +44,11 @@ printers:
           type: 'text'
           fill: true
           fill_char: ' '
-        rps_number: #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-          value: ''
+        rps_number:
+          value: '@rps_item.rps_item_id'
+          dynamic: true
           size: 12
-          type: 'text'
+          type: 'num'
           fill: true
         emitted_on:
           value: "@rps_item.emitted_on.strftime('%Y%m%d')"
@@ -70,7 +70,7 @@ printers:
           value: '@rps_item.tax_amount'
           dynamic: true
           size: 15
-          type: 'text'
+          type: 'num'
           fill: true
         service_code:
           value: '@rps_item.service_code'

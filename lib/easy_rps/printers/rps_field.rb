@@ -24,7 +24,8 @@ module EasyRps
       end
 
       def fill_field
-        while @value.length < @size do
+        @value = @value.to_s
+        while @value.to_s.length < @size do
           if @type == 'num'
             @value = @fill_char + @value
           else
