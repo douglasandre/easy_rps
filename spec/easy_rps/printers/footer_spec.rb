@@ -12,8 +12,10 @@ describe EasyRps::Printers::Footer do
   describe '#print', footer: true do
     it 'prints the rps footer correctly' do
       footer    = EasyRps::Printers::Footer.new(rps)
-      expected  = "90000010000000004665034000000000000000"
-      expect(footer.print).to eq(expected)
+      total_itens       = fill_field(rps.rps_itens.length, 7)
+      total_amount      = fill_field(rps.rps_itens.map(&:amount_in_cents).reduce(:+), 15)
+      total_tax_amount  = fill_field(rps.rps_itens.map(&:tax_amount).reduce(:+), 15)
+      expect(footer.print).to eq("9#{total_itens}#{total_amount}#{total_tax_amount}")
     end
   end
 end
