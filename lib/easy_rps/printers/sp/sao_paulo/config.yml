@@ -112,21 +112,21 @@ printers:
           size: 1
           type: 'num'
         total_itens:
-          value: 'total_itens'
+          value: '@total_itens'
           dynamic: true
           fill: true
           size: 7
           type: 'num'
         total_amount:
-          value: '3'
+          value: '@total_amount'
           dynamic: true
           fill: true
           size: 15
           type: 'num'
         total_tax_amount:
-          value: 'total_tax_amount'
+          value: '@total_tax_amount'
           dynamic: true
-          fill": true
+          fill: true
           size: 15
           type: 'num'
 
