@@ -1,6 +1,7 @@
 # EasyRps
 
-EasyRps allows you to generate RPS for NF-e emission easily.
+EasyRps allows you to generate RPS for NF-e emission easily. NOTE: WE ARE IN A FIRST VERSION, SO UNTIL NOW WE SUPPORT THE RPS EMISSION JUST FOR SP/SAO PAULO. Contributions are always welcome!
+
 
 ## Installation
 
