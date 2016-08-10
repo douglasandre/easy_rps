@@ -2,7 +2,7 @@ module EasyRps
   module Printers
     class RpsField
 
-      attr_reader :options, :key, :value, :size, :type, :rps
+      attr_reader :options, :key, :value, :size, :type, :rps, :fixed
 
       def initialize(key, options = {})
         options.except('fill', 'fill_char', 'value', 'dynamic').each do |option, value|
@@ -20,7 +20,17 @@ module EasyRps
 
       def formatted_value
         raise "Invalid length for #{@key}. Expected: #{@size}. Received: #{@value.length}. #{@value}" if @value.length > @size.to_i
-        @fill ? fill_field : @value
+        send("format_#{@type}") if (@type == 'num' || @type == 'text') && !@fixed
+        @value = @fill ? fill_field : @value
+        @value
+      end
+
+      def format_num
+        @value = @value.gsub(/[^0-9A-Za-z]/, '')
+      end
+
+      def format_text
+        @value = @value.parameterize.upcase.gsub('-', ' ').gsub(/[^0-9A-Za-z ]/, '')
       end
 
       def fill_field

@@ -3,8 +3,8 @@ require 'spec_helper'
 describe EasyRps::Printers::Detail do
 
   let(:issuer)  { Business.create!(municipal_inscription: '12345', state: 'SP', city: 'São Paulo') }
-  let(:taker)   { User.create! }
-  let(:service) { Service.create!(name: 'Banho') }
+  let(:taker)   { User.create!(cpf: '661.539.276-37') }
+  let(:service) { Service.create!(name: 'Consulta Veterinária') }
   let(:items)   { [Sale.create!(service: service, amount: '62,50', user: taker),
                    Sale.create!(service: service, amount: '79,90', user: taker)] }
   let(:item)    { items.first }

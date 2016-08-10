@@ -36,6 +36,7 @@ printers:
           type: 'num'
         rps_type:
           value: 'RPS-C'
+          fixed: true
           size: 5
           type: 'text'
         rps_serie:
