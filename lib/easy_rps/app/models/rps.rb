@@ -31,7 +31,7 @@ module EasyRps
       self.rps_itens      = rps_itens.sort_by{|a| a.rps_item_id}
       self.start_date     = @rps_itens.first.emitted_on
       self.end_date       = @rps_itens.last.emitted_on
-      self.first_item_id  = (Rps.order('id DESC').first.try(:last_item_id) || 0) + 1
+      self.first_item_id  = (Rps.order('created_at DESC').first.try(:last_item_id) || 0) + 1
       self.last_item_id   = self.first_item_id + @rps_itens.length
     end
 

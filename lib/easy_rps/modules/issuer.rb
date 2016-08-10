@@ -10,6 +10,12 @@ module EasyRps
     # easy_rps issuer: { municipal_inscription: FIELD_IN_YOUR_SYSTEM }
     #
     module Issuer
+      extend  ActiveSupport::Concern
+
+      included do
+        has_many :rps, as: :issuer, class_name: 'EasyRps::Rps'
+      end
+
 
       # Your class need to respond to these calls, 
       # using an attribute or method
