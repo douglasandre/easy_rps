@@ -6,7 +6,7 @@ module EasyRps
 
     self.table_name = 'rps'
 
-    attr_accessor :issuer, :taker, :rps_itens, :printer
+    attr_accessor :issuer, :rps_itens, :printer
 
     def initialize(issuer, rps_itens, options={})
       super(options)
@@ -26,12 +26,14 @@ module EasyRps
     end
 
     def auto_fill(rps_itens)
+      self.first_item_id  = (issuer.rps.order('created_at DESC').first.try(:last_item_id) || 0) + 1
       self.issuer_id      = issuer.id
       self.issuer_type    = issuer.class.name
-      self.rps_itens      = rps_itens.sort_by{|a| a.rps_item_id}
+      self.rps_itens      = rps_itens.each_with_index do|item, idx|
+                              item.rps_item_id  = idx + first_item_id
+                            end
       self.start_date     = @rps_itens.first.emitted_on
       self.end_date       = @rps_itens.last.emitted_on
-      self.first_item_id  = (Rps.order('created_at DESC').first.try(:last_item_id) || 0) + 1
       self.last_item_id   = self.first_item_id + @rps_itens.length
     end
 

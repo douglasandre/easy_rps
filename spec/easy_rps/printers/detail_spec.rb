@@ -25,7 +25,7 @@ describe EasyRps::Printers::Detail do
       iss_withheld    = fill_field(item.iss_withheld, 1)
       taker_doc_type  = fill_field(item.taker.taker_doc_type, 1)
       taker_doc_value = fill_field(item.taker.taker_doc_value, 14)
-      rps_description = item.rps_description.upcase
+      rps_description = format_text(item.rps_description.upcase)
       expected_impression = "3RPS-C#{rps_serie}#{rps_number}#{emitted_on}#{rps_status}#{amount}#{tax_amount}#{service_code}#{aliquot}#{iss_withheld}#{taker_doc_type}#{taker_doc_value}#{rps_description}"
       expect(detail.print).to eq(expected_impression)
     end

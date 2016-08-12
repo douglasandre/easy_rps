@@ -10,11 +10,11 @@ module EasyRps
 
       def print
         @details = ''
-        @header = "#{Header.new(rps).print}\n"
+        @header = "#{Header.new(rps).print}\r\n"
         rps.rps_itens.each do |item|
-          @details += "#{Detail.new(rps, item).print}\n"
+          @details += "#{Detail.new(rps, item).print}\r\n"
         end
-        @footer = "#{Footer.new(rps).print}\n"
+        @footer = "#{Footer.new(rps).print}\r\n"
         @header + @details + @footer
       end
     end
