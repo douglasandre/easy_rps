@@ -8,6 +8,10 @@ module EasyRps
         @rps  = rps
       end
 
+      def existent_configuration?
+        File.exist?("lib/easy_rps/printers/#{sanitize(@rps.issuer.state)}/#{sanitize(@rps.issuer.city)}/config.yml")
+      end
+
       def print
         @details = ''
         @header = "#{Header.new(rps).print}\r\n"
@@ -17,6 +21,13 @@ module EasyRps
         @footer = "#{Footer.new(rps).print}\r\n"
         @header + @details + @footer
       end
+
+      private
+
+      def sanitize(expression)
+        expression.parameterize.gsub('-', '_')
+      end
+
     end
   end
 end

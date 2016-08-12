@@ -12,14 +12,29 @@ module EasyRps
       super(options)
       self.issuer     = issuer
       self.printer    = Printers::BasePrinter.new(self)
-      auto_fill(rps_itens)
+      valid_params?(issuer, rps_itens, options={})
+      auto_fill(rps_itens) unless errors.any?
     end
     
     def print_and_save
-      print && save!
+      ActiveRecord::Base.transaction do
+        print && save! && save_itens
+      end
     end
 
+
     private
+
+    def valid_params?(issuer, rps_itens, options={})
+      self.errors.add(:rps_itens, 'Não há vendas suficientes para emissão de RPS') unless rps_itens && rps_itens.length > 0
+      self.errors.add(:printer, "Ainda não é possível imprimir RPS para #{issuer.state}/#{issuer.city}") unless printer.existent_configuration?
+    end
+
+    def save_itens
+      rps_itens.each do |item|
+        item.update!(rps_id: self.id, rps_item_id: item.rps_item_id)
+      end
+    end
 
     def print
       self.printed_text = @printer.print
@@ -34,7 +49,7 @@ module EasyRps
                             end
       self.start_date     = @rps_itens.first.emitted_on
       self.end_date       = @rps_itens.last.emitted_on
-      self.last_item_id   = self.first_item_id + @rps_itens.length
+      self.last_item_id   = self.first_item_id + @rps_itens.length - 1
     end
 
   end

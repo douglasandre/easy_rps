@@ -16,7 +16,6 @@ module EasyRps
         has_many :rps, as: :issuer, class_name: 'EasyRps::Rps'
       end
 
-
       # Your class need to respond to these calls, 
       # using an attribute or method
       def self.required_responses
